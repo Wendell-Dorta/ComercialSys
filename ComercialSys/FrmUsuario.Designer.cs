@@ -39,6 +39,8 @@
             label5 = new Label();
             txtConfSenha = new TextBox();
             groupBox1 = new GroupBox();
+            txtNivel = new Label();
+            comboBox1 = new ComboBox();
             btnConsultar = new Button();
             btnEditar = new Button();
             txtEmail = new TextBox();
@@ -59,7 +61,7 @@
             label1.Location = new Point(90, 34);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
-            label1.TabIndex = 0;
+            label1.TabIndex = 2;
             label1.Text = "ID";
             // 
             // txtId
@@ -68,7 +70,7 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(80, 23);
-            txtId.TabIndex = 1;
+            txtId.TabIndex = 6;
             // 
             // label2
             // 
@@ -84,7 +86,8 @@
             txtNome.Location = new Point(115, 55);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(278, 23);
-            txtNome.TabIndex = 1;
+            txtNome.TabIndex = 0;
+            txtNome.Text = "ende";
             // 
             // label3
             // 
@@ -117,7 +120,8 @@
             txtSenha.Location = new Point(115, 113);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(197, 23);
-            txtSenha.TabIndex = 1;
+            txtSenha.TabIndex = 2;
+            txtSenha.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -133,10 +137,13 @@
             txtConfSenha.Location = new Point(115, 142);
             txtConfSenha.Name = "txtConfSenha";
             txtConfSenha.Size = new Size(197, 23);
-            txtConfSenha.TabIndex = 1;
+            txtConfSenha.TabIndex = 3;
+            txtConfSenha.UseSystemPasswordChar = true;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtNivel);
+            groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(txtEmail);
@@ -153,9 +160,27 @@
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(500, 235);
-            groupBox1.TabIndex = 2;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados de Usuário";
+            // 
+            // txtNivel
+            // 
+            txtNivel.AutoSize = true;
+            txtNivel.Location = new Point(333, 150);
+            txtNivel.Name = "txtNivel";
+            txtNivel.Size = new Size(34, 15);
+            txtNivel.TabIndex = 4;
+            txtNivel.Text = "Nível";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "1 - Atendente", "2 - Caixa", "3 - Gerente", "4 - Estoquista", "5 - Empacotador" });
+            comboBox1.Location = new Point(373, 142);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 4;
             // 
             // btnConsultar
             // 
@@ -165,7 +190,7 @@
             btnConsultar.Location = new Point(383, 190);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(111, 39);
-            btnConsultar.TabIndex = 2;
+            btnConsultar.TabIndex = 8;
             btnConsultar.Text = "&Consultar";
             btnConsultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnConsultar.UseVisualStyleBackColor = true;
@@ -178,7 +203,7 @@
             btnEditar.Location = new Point(266, 190);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(111, 39);
-            btnEditar.TabIndex = 2;
+            btnEditar.TabIndex = 7;
             btnEditar.Text = "&Editar";
             btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditar.UseVisualStyleBackColor = true;
@@ -198,7 +223,7 @@
             btnInserir.Location = new Point(149, 190);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(111, 39);
-            btnInserir.TabIndex = 2;
+            btnInserir.TabIndex = 5;
             btnInserir.Text = "&Inserir";
             btnInserir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInserir.UseVisualStyleBackColor = true;
@@ -297,5 +322,7 @@
         private DataGridViewTextBoxColumn clnNivel;
         private DataGridViewCheckBoxColumn clnAtivo;
         private TextBox txtEmail;
+        private Label txtNivel;
+        private ComboBox comboBox1;
     }
 }
