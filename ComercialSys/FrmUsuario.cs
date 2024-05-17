@@ -16,5 +16,10 @@ namespace ComercialSys
         {
             InitializeComponent();
         }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            txtBusca.Text = $"{txtNome.Text} - {txtEmail.Text} - {txtSenha.Text}";
+        }
     }
 }
