@@ -40,7 +40,7 @@
             txtConfSenha = new TextBox();
             groupBox1 = new GroupBox();
             txtNivel = new Label();
-            comboBox1 = new ComboBox();
+            cmbNivel = new ComboBox();
             btnConsultar = new Button();
             btnEditar = new Button();
             txtEmail = new TextBox();
@@ -143,7 +143,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(txtNivel);
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(cmbNivel);
             groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(txtEmail);
@@ -173,14 +173,14 @@
             txtNivel.TabIndex = 4;
             txtNivel.Text = "Nível";
             // 
-            // comboBox1
+            // cmbNivel
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "1 - Atendente", "2 - Caixa", "3 - Gerente", "4 - Estoquista", "5 - Empacotador" });
-            comboBox1.Location = new Point(373, 142);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 4;
+            cmbNivel.FormattingEnabled = true;
+            cmbNivel.Items.AddRange(new object[] { "1 - Atendente", "2 - Caixa", "3 - Gerente", "4 - Estoquista", "5 - Empacotador" });
+            cmbNivel.Location = new Point(373, 142);
+            cmbNivel.Name = "cmbNivel";
+            cmbNivel.Size = new Size(121, 23);
+            cmbNivel.TabIndex = 4;
             // 
             // btnConsultar
             // 
@@ -292,6 +292,7 @@
             Controls.Add(txtBusca);
             Name = "FrmUsuario";
             Text = "FrmUsuario";
+            Load += FrmUsuario_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
@@ -323,6 +324,6 @@
         private DataGridViewCheckBoxColumn clnAtivo;
         private TextBox txtEmail;
         private Label txtNivel;
-        private ComboBox comboBox1;
+        private ComboBox cmbNivel;
     }
 }

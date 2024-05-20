@@ -1,4 +1,6 @@
-﻿using Mysqlx.Crud;
+﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using System.Data;
 
 namespace ComClassSys
 {
@@ -39,7 +41,16 @@ namespace ComClassSys
 
         public void Inserir()
         {
-            
+            var cmd = Banco.Abrir(); // obj do tipo sql command
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_insert";
+            // adicionar valores de insersão no banco
+            // spnome varchar(60), spemail varchar(60), spsenha varchar(32), spnivel char(1)
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spemail", Email);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnivel", Nivel);
+            cmd.ExecuteNonQuery(); // executar do MySql (sinal do raio/ enter do terminal)
         }
         public bool Editar(int id)  // e possivel fazer com singleton
         {
@@ -52,7 +63,25 @@ namespace ComClassSys
         }
         public static List<Usuario> ObterLista()
         {
+            // listar o usuario
             List<Usuario> lista = new List<Usuario>();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from usuarios order by nome";
+            var dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                lista.Add(new Usuario(
+                                        dr.GetInt32(0),
+                                        dr.GetString(1),
+                                        dr.GetString(2),
+                                        dr.GetString(3),
+                                        dr.GetString(4),
+                                        dr.GetBoolean(5)
+                                     ));
+                // pode ser feito com o nome da tabela, sem ser com o indice da coluna
+            }
             return lista;
         }
     }
