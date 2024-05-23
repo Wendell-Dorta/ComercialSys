@@ -45,14 +45,14 @@
             btnEditar = new Button();
             txtEmail = new TextBox();
             btnInserir = new Button();
-            dgvUsuarios = new DataGridView();
+            dgvUsuario = new DataGridView();
             clnId = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             clnEmail = new DataGridViewTextBoxColumn();
             clnNivel = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewCheckBoxColumn();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -196,6 +196,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditar.Image = Properties.Resources.Edit_Alt1;
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
@@ -206,6 +207,7 @@
             btnEditar.Text = "&Editar";
             btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // txtEmail
             // 
@@ -228,18 +230,18 @@
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
             // 
-            // dgvUsuarios
+            // dgvUsuario
             // 
-            dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail, clnNivel, clnAtivo });
-            dgvUsuarios.Location = new Point(12, 282);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.RowHeadersVisible = false;
-            dgvUsuarios.Size = new Size(500, 150);
-            dgvUsuarios.TabIndex = 3;
+            dgvUsuario.AllowUserToAddRows = false;
+            dgvUsuario.AllowUserToDeleteRows = false;
+            dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuario.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail, clnNivel, clnAtivo });
+            dgvUsuario.Location = new Point(12, 282);
+            dgvUsuario.Name = "dgvUsuario";
+            dgvUsuario.ReadOnly = true;
+            dgvUsuario.RowHeadersVisible = false;
+            dgvUsuario.Size = new Size(500, 150);
+            dgvUsuario.TabIndex = 3;
             // 
             // clnId
             // 
@@ -286,7 +288,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(522, 441);
-            Controls.Add(dgvUsuarios);
+            Controls.Add(dgvUsuario);
             Controls.Add(groupBox1);
             Controls.Add(txtBusca);
             Name = "FrmUsuario";
@@ -294,7 +296,7 @@
             Load += FrmUsuario_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -315,7 +317,7 @@
         private Button btnConsultar;
         private Button btnEditar;
         private Button btnInserir;
-        private DataGridView dgvUsuarios;
+        private DataGridView dgvUsuario;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnEmail;

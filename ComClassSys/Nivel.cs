@@ -11,8 +11,8 @@ namespace ComClassSys
     {
         // propriedades da classe
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Sigla { get; set; }
+        public string? Nome { get; set; }
+        public string? Sigla { get; set; }
 
         // metodos contrutores
         public Nivel() { }

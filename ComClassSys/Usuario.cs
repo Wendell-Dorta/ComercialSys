@@ -7,7 +7,7 @@ namespace ComClassSys
     public class Usuario
     {
         // propriedades da classe
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
         public string? Senha { get; set; }
@@ -52,7 +52,25 @@ namespace ComClassSys
         }
         public bool Editar(int id)  // e possivel fazer com singleton
         {
-            return true;
+            bool resultado = false;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "sp_usuario_altera";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+
+            return resultado;
         }
         public static Usuario ObterPorId(int id)
         {

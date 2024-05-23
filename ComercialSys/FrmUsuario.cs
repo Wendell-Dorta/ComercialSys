@@ -25,7 +25,7 @@ namespace ComercialSys
             /* linhas retiradas, deixei aq so pra poder estudar depois */
 
             Usuario usuario = new Usuario(
-                                          txtNome.Text, 
+                                          txtNome.Text,
                                           txtEmail.Text,
                                           txtSenha.Text,
                                           Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
@@ -41,34 +41,39 @@ namespace ComercialSys
             var niveis = Nivel.ObterLista();
             cmbNivel.DataSource = niveis;
             cmbNivel.DisplayMember = "nome";
+            cmbNivel.ValueMember = "id";
 
 
             // List<Usuario> lista = Usuario.ObterLista(); <- tambem pode ser feito assim
             var lista = Usuario.ObterLista();
-            dgvUsuarios.Rows.Clear();
+            dgvUsuario.Rows.Clear();
             int count = 0;
             foreach (var usuario in lista)
             {
-                dgvUsuarios.Rows.Add();
+                dgvUsuario.Rows.Add();
                 // dgvUsuarios.CurrentRow.Index
-                dgvUsuarios.Rows[count].Cells[0].Value = usuario.Id;
-                dgvUsuarios.Rows[count].Cells[1].Value = usuario.Nome;
-                dgvUsuarios.Rows[count].Cells[2].Value = usuario.Email;
-                dgvUsuarios.Rows[count].Cells[3].Value = usuario.Nivel.Nome;
-                dgvUsuarios.Rows[count].Cells[4].Value = usuario.Ativo;
+                dgvUsuario.Rows[count].Cells[0].Value = usuario.Id;
+                dgvUsuario.Rows[count].Cells[1].Value = usuario.Nome;
+                dgvUsuario.Rows[count].Cells[2].Value = usuario.Email;
+                dgvUsuario.Rows[count].Cells[3].Value = usuario.Nivel.Nome;
+                dgvUsuario.Rows[count].Cells[4].Value = usuario.Ativo;
 
                 count++;
             }
-
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             if (btnConsultar.Text == "&Consultar")
             {
-                txtId.ReadOnly = false;
-                txtId.Focus();
+                txtNome.Clear(); // limpa o campo Nome
+                txtEmail.Clear();// limpa o campo Email
+                txtSenha.Clear(); // limpa o campo Senha
+                txtConfSenha.Clear(); // limpa o campo Confirmar Senha
+                txtId.ReadOnly = false; // Habilita a edição no campo Id
+                txtId.Focus(); // deixa o campo id com foco
                 btnConsultar.Text = "&Obter por ID";
+                txtSenha.PlaceholderText = string.Empty;
             }
             else
             {
@@ -79,7 +84,31 @@ namespace ComercialSys
                     txtEmail.Text = usuario.Email;
                     txtId.ReadOnly = true;
                     btnConsultar.Text = "&Consultar";
+                    txtSenha.PlaceholderText = "[senha não alterada]";
+
+                    cmbNivel.SelectedValue = usuario.Nivel.Id;
+                    btnEditar.Enabled = true;
                 }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new(
+                    int.Parse(txtId.Text),
+                    txtNome.Text,
+                    txtEmail.Text,
+                    txtSenha.Text,
+                    Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue)),
+                    true);
+            if (usuario.Editar(usuario.Id))
+            {
+                FrmUsuario_Load(sender, e);
+                MessageBox.Show($"O usuário {usuario.Nome} foi alterado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show($"Falha ao alterar o usuário \" {usuario.Nome} \" !");
             }
         }
     }

@@ -7,11 +7,6 @@ namespace ComercialSys
             InitializeComponent();
         }
 
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCliente frmCliente = new FrmCliente(); /* objeto do tipo form de cliente */
@@ -33,6 +28,13 @@ namespace ComercialSys
             FrmUsuario frmUsuario = new FrmUsuario();
             frmUsuario.MdiParent = this;
             frmUsuario.Show();
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCategoria frmCategoria = new FrmCategoria();
+            frmCategoria.MdiParent = this;
+            frmCategoria.Show();
         }
     }
 }
