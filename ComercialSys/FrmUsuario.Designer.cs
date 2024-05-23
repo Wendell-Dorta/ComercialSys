@@ -87,7 +87,6 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(278, 23);
             txtNome.TabIndex = 0;
-            txtNome.Text = "ende";
             // 
             // label3
             // 
@@ -176,7 +175,6 @@
             // cmbNivel
             // 
             cmbNivel.FormattingEnabled = true;
-            cmbNivel.Items.AddRange(new object[] { "1 - Atendente", "2 - Caixa", "3 - Gerente", "4 - Estoquista", "5 - Empacotador" });
             cmbNivel.Location = new Point(373, 142);
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(121, 23);
@@ -194,6 +192,7 @@
             btnConsultar.Text = "&Consultar";
             btnConsultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnEditar
             // 
@@ -286,7 +285,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(523, 450);
+            ClientSize = new Size(522, 441);
             Controls.Add(dgvUsuarios);
             Controls.Add(groupBox1);
             Controls.Add(txtBusca);
