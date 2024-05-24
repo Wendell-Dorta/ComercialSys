@@ -1,3 +1,5 @@
+using ComClassSys;
+
 namespace ComercialSys
 {
     public partial class FrmPrincipal : Form
@@ -35,6 +37,25 @@ namespace ComercialSys
             FrmCategoria frmCategoria = new FrmCategoria();
             frmCategoria.MdiParent = this;
             frmCategoria.Show();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            FrmLogin login = new();
+            // login.MdiParent = this;
+            login.StartPosition = FormStartPosition.CenterScreen;
+            login.ShowDialog();
+            // fazer uma variavel de conf que quando o login = true exibe a pagina principal
+            if ( = false)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Show();
+            }
+
+            tslUsuario.Text = Program.Usuario.Nome = " - " + Program.Usuario.Nivel.Nome;
         }
     }
 }

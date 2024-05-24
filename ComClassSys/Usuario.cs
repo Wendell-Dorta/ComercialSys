@@ -152,9 +152,17 @@ namespace ComClassSys
             Usuario usuario = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "";
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = md5('{senha}') and ativo = 1";
             var dr = cmd.ExecuteReader();
-
+            while(dr.Read())
+            {
+                usuario.Id = dr.GetInt32(0);
+                usuario.Nome = dr.GetString(1);
+                usuario.Email = dr.GetString(2);
+                usuario.Senha = dr.GetString(3);
+                usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(4)));
+                usuario.Ativo = dr.GetBoolean(5);
+            }
 
             return usuario;
         }  

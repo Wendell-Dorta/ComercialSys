@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             cadastroToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
@@ -45,8 +44,10 @@
             históricoToolStripMenuItem = new ToolStripMenuItem();
             movimentoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            contextMenuStrip1 = new ContextMenuStrip(components);
+            statusStrip1 = new StatusStrip();
+            tslUsuario = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -169,24 +170,38 @@
             caixaToolStripMenuItem.Size = new Size(103, 22);
             caixaToolStripMenuItem.Text = "&Caixa";
             // 
-            // contextMenuStrip1
+            // statusStrip1
             // 
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { tslUsuario });
+            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // tslUsuario
+            // 
+            tslUsuario.Name = "tslUsuario";
+            tslUsuario.Size = new Size(12, 17);
+            tslUsuario.Text = "-";
             // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "FrmPrincipal";
             Text = "ComercialSys1.0 - Sistema de Adiministração Comercial";
             WindowState = FormWindowState.Maximized;
+            Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,11 +219,12 @@
         private ToolStripMenuItem pedidoToolStripMenuItem;
         private ToolStripMenuItem novoToolStripMenuItem2;
         private ToolStripMenuItem movimentoToolStripMenuItem;
-        private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem buscarToolStripMenuItem;
         private ToolStripMenuItem históricoToolStripMenuItem;
         private ToolStripMenuItem caixaToolStripMenuItem;
         private ToolStripMenuItem usuárioToolStripMenuItem;
         private ToolStripMenuItem categoriasToolStripMenuItem;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel tslUsuario;
     }
 }
