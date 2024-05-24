@@ -92,10 +92,33 @@ namespace ComercialSys
             Categoria categoria = new();
             categoria.Id = int.Parse(txtId.Text);
             string nome = txtCategoria.Text;
-            if(categoria.Deletar(categoria.Id))
+            if (categoria.Deletar(categoria.Id))
             {
                 FrmCategoria_Load(sender, e);
                 MessageBox.Show($"A categoria \" {nome} \" foi excluido com sucesso!");
+            }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusca.Text.Length > 0)
+            {
+                var lista = Categoria.ObterLista(txtBusca.Text);
+                dgvCategoria.Rows.Clear();
+                int count = 0;
+                foreach (var categoria in lista)
+                {
+                    dgvCategoria.Rows.Add();
+                    dgvCategoria.Rows[count].Cells[0].Value = categoria.Id;
+                    dgvCategoria.Rows[count].Cells[1].Value = categoria.Nome;
+                    dgvCategoria.Rows[count].Cells[2].Value = categoria.Sigla;
+
+                    count++;
+                }
+            }
+            else
+            {
+                FrmCategoria_Load(sender, e);
             }
         }
     }

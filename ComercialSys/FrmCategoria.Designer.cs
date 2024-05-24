@@ -43,6 +43,7 @@
             clnId = new DataGridViewTextBoxColumn();
             clncCategoria = new DataGridViewTextBoxColumn();
             clnSigla = new DataGridViewTextBoxColumn();
+            txtBusca = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             SuspendLayout();
@@ -179,11 +180,11 @@
             dgvCategoria.AllowUserToDeleteRows = false;
             dgvCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCategoria.Columns.AddRange(new DataGridViewColumn[] { clnId, clncCategoria, clnSigla });
-            dgvCategoria.Location = new Point(12, 220);
+            dgvCategoria.Location = new Point(12, 249);
             dgvCategoria.Name = "dgvCategoria";
             dgvCategoria.ReadOnly = true;
             dgvCategoria.RowHeadersVisible = false;
-            dgvCategoria.Size = new Size(498, 209);
+            dgvCategoria.Size = new Size(498, 180);
             dgvCategoria.TabIndex = 9;
             // 
             // clnId
@@ -210,11 +211,21 @@
             clnSigla.Name = "clnSigla";
             clnSigla.ReadOnly = true;
             // 
+            // txtBusca
+            // 
+            txtBusca.Location = new Point(12, 220);
+            txtBusca.Name = "txtBusca";
+            txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar a categoria";
+            txtBusca.Size = new Size(498, 23);
+            txtBusca.TabIndex = 10;
+            txtBusca.TextChanged += txtBusca_TextChanged;
+            // 
             // FrmCategoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(522, 441);
+            Controls.Add(txtBusca);
             Controls.Add(dgvCategoria);
             Controls.Add(groupBox1);
             Name = "FrmCategoria";
@@ -224,6 +235,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -243,5 +255,6 @@
         private DataGridViewTextBoxColumn clncCategoria;
         private DataGridViewTextBoxColumn clnSigla;
         private Button btnDeletar;
+        private TextBox txtBusca;
     }
 }

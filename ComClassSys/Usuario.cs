@@ -65,7 +65,7 @@ namespace ComClassSys
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -114,15 +114,23 @@ namespace ComClassSys
 
             return usuario;
         }
-        public static List<Usuario> ObterLista()
+        public static List<Usuario> ObterLista(string nome = null)
         {
             // listar o usuario
             List<Usuario> lista = new List<Usuario>();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from usuarios order by nome";
-            var dr = cmd.ExecuteReader();
+            if(nome == null)
+            { 
+                cmd.CommandText = "select * from usuarios order by nome";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from usuarios where nome like '%{nome}%' order by nome";
+            }
 
+
+            var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 lista.Add(new Usuario(
@@ -139,5 +147,16 @@ namespace ComClassSys
 
             return lista;
         }
+        public static Usuario EfetuarLogin(string email, string senha)
+        {
+            Usuario usuario = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "";
+            var dr = cmd.ExecuteReader();
+
+
+            return usuario;
+        }  
     }
 }

@@ -101,9 +101,10 @@
             // 
             txtBusca.Location = new Point(12, 253);
             txtBusca.Name = "txtBusca";
-            txtBusca.PlaceholderText = "Digite pelo menos duas letras para pesquisar o usuário";
+            txtBusca.PlaceholderText = "Digite para pesquisar o usuário";
             txtBusca.Size = new Size(500, 23);
             txtBusca.TabIndex = 1;
+            txtBusca.TextChanged += txtBusca_TextChanged;
             // 
             // label4
             // 

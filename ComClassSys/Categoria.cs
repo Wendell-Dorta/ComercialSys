@@ -97,14 +97,21 @@ namespace ComClassSys
 
             return categoria;
         }
-        public static List<Categoria> ObterLista()
+        public static List<Categoria> ObterLista(string nome = null)
         {
             List<Categoria> lista = new List<Categoria>();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from categorias order by nome";
-            var dr = cmd.ExecuteReader();
+            if(nome == null)
+            { 
+                cmd.CommandText = "select * from categorias order by nome";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from categorias where nome like '%{nome}%' order by nome";
+            }
 
+            var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 lista.Add(new(
