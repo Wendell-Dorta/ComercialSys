@@ -46,15 +46,7 @@ namespace ComercialSys
             login.StartPosition = FormStartPosition.CenterScreen;
             login.ShowDialog();
             // fazer uma variavel de conf que quando o login = true exibe a pagina principal
-            if ( = false)
-            {
-                this.Hide();
-            }
-            else
-            {
-                this.Show();
-            }
-
+            this.Hide();
             tslUsuario.Text = Program.Usuario.Nome = " - " + Program.Usuario.Nivel.Nome;
         }
     }
