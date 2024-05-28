@@ -30,8 +30,7 @@
         {
             tabControl1 = new TabControl();
             tbpDadosPessoais = new TabPage();
-            btnDeletar = new Button();
-            button2 = new Button();
+            txtClienteId = new TextBox();
             chkAtivo = new CheckBox();
             dtpDataNasc = new DateTimePicker();
             mxtTelefone = new MaskedTextBox();
@@ -45,17 +44,19 @@
             label4 = new Label();
             txtNome = new TextBox();
             tbpEndereco = new TabPage();
-            btnEditar = new Button();
-            button1 = new Button();
+            btnSalvar = new Button();
+            btnAdicionar = new Button();
             label11 = new Label();
             label10 = new Label();
-            comboBox1 = new ComboBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textNumero = new TextBox();
+            cmbTipoEndereco = new ComboBox();
+            txtComplemento = new TextBox();
+            txtBairro = new TextBox();
+            txtCidade = new TextBox();
+            txtUf = new TextBox();
+            txtNumero = new TextBox();
             txtLogradouro = new TextBox();
-            maskedTextBox1 = new MaskedTextBox();
+            mxtCep = new MaskedTextBox();
+            label12 = new Label();
             label1 = new Label();
             label6 = new Label();
             label7 = new Label();
@@ -91,8 +92,7 @@
             // tbpDadosPessoais
             // 
             tbpDadosPessoais.BackColor = Color.Transparent;
-            tbpDadosPessoais.Controls.Add(btnDeletar);
-            tbpDadosPessoais.Controls.Add(button2);
+            tbpDadosPessoais.Controls.Add(txtClienteId);
             tbpDadosPessoais.Controls.Add(chkAtivo);
             tbpDadosPessoais.Controls.Add(dtpDataNasc);
             tbpDadosPessoais.Controls.Add(mxtTelefone);
@@ -112,35 +112,13 @@
             tbpDadosPessoais.TabIndex = 0;
             tbpDadosPessoais.Text = "Dados Pessoais";
             // 
-            // btnDeletar
+            // txtClienteId
             // 
-            btnDeletar.AutoSize = true;
-            btnDeletar.Enabled = false;
-            btnDeletar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDeletar.Image = Properties.Resources.Delete;
-            btnDeletar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDeletar.Location = new Point(335, 107);
-            btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(111, 39);
-            btnDeletar.TabIndex = 38;
-            btnDeletar.Text = "&Deletar";
-            btnDeletar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDeletar.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.AutoSize = true;
-            button2.Enabled = false;
-            button2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Image = Properties.Resources.Edit_Alt1;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(335, 62);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 39);
-            button2.TabIndex = 37;
-            button2.Text = "&Editar";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            txtClienteId.Location = new Point(6, 173);
+            txtClienteId.Name = "txtClienteId";
+            txtClienteId.Size = new Size(100, 23);
+            txtClienteId.TabIndex = 37;
+            txtClienteId.Visible = false;
             // 
             // chkAtivo
             // 
@@ -168,9 +146,9 @@
             // mxtTelefone
             // 
             mxtTelefone.Location = new Point(6, 100);
-            mxtTelefone.Mask = "(999) 000-0000";
+            mxtTelefone.Mask = "(99) 00000-0000";
             mxtTelefone.Name = "mxtTelefone";
-            mxtTelefone.Size = new Size(77, 23);
+            mxtTelefone.Size = new Size(98, 23);
             mxtTelefone.TabIndex = 34;
             // 
             // mxtCpf
@@ -178,7 +156,7 @@
             mxtCpf.Location = new Point(110, 100);
             mxtCpf.Mask = "000.000.000-00";
             mxtCpf.Name = "mxtCpf";
-            mxtCpf.Size = new Size(78, 23);
+            mxtCpf.Size = new Size(98, 23);
             mxtCpf.TabIndex = 33;
             // 
             // txtNivel
@@ -194,7 +172,7 @@
             // 
             txtEmail.Location = new Point(6, 58);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(182, 23);
+            txtEmail.Size = new Size(202, 23);
             txtEmail.TabIndex = 19;
             // 
             // btnInserir
@@ -203,13 +181,14 @@
             btnInserir.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnInserir.Image = Properties.Resources.Add;
             btnInserir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInserir.Location = new Point(335, 18);
+            btnInserir.Location = new Point(354, 189);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(111, 38);
+            btnInserir.Size = new Size(92, 38);
             btnInserir.TabIndex = 24;
             btnInserir.Text = "&Inserir";
             btnInserir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // label2
             // 
@@ -241,7 +220,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(110, 85);
+            label4.Location = new Point(110, 86);
             label4.Name = "label4";
             label4.Size = new Size(28, 15);
             label4.TabIndex = 18;
@@ -251,24 +230,26 @@
             // 
             txtNome.Location = new Point(6, 18);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(182, 23);
+            txtNome.Size = new Size(202, 23);
             txtNome.TabIndex = 14;
             // 
             // tbpEndereco
             // 
             tbpEndereco.BackColor = Color.Transparent;
             tbpEndereco.BackgroundImageLayout = ImageLayout.None;
-            tbpEndereco.Controls.Add(btnEditar);
-            tbpEndereco.Controls.Add(button1);
+            tbpEndereco.Controls.Add(btnSalvar);
+            tbpEndereco.Controls.Add(btnAdicionar);
             tbpEndereco.Controls.Add(label11);
             tbpEndereco.Controls.Add(label10);
-            tbpEndereco.Controls.Add(comboBox1);
-            tbpEndereco.Controls.Add(textBox4);
-            tbpEndereco.Controls.Add(textBox3);
-            tbpEndereco.Controls.Add(textBox2);
-            tbpEndereco.Controls.Add(textNumero);
+            tbpEndereco.Controls.Add(cmbTipoEndereco);
+            tbpEndereco.Controls.Add(txtComplemento);
+            tbpEndereco.Controls.Add(txtBairro);
+            tbpEndereco.Controls.Add(txtCidade);
+            tbpEndereco.Controls.Add(txtUf);
+            tbpEndereco.Controls.Add(txtNumero);
             tbpEndereco.Controls.Add(txtLogradouro);
-            tbpEndereco.Controls.Add(maskedTextBox1);
+            tbpEndereco.Controls.Add(mxtCep);
+            tbpEndereco.Controls.Add(label12);
             tbpEndereco.Controls.Add(label1);
             tbpEndereco.Controls.Add(label6);
             tbpEndereco.Controls.Add(label7);
@@ -281,34 +262,33 @@
             tbpEndereco.TabIndex = 1;
             tbpEndereco.Text = "Endereço";
             // 
-            // btnEditar
+            // btnSalvar
             // 
-            btnEditar.AutoSize = true;
-            btnEditar.Enabled = false;
-            btnEditar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Image = Properties.Resources.Edit_Alt1;
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(200, 189);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(92, 38);
-            btnEditar.TabIndex = 51;
-            btnEditar.Text = "&Salvar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEditar.UseVisualStyleBackColor = true;
+            btnSalvar.AutoSize = true;
+            btnSalvar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalvar.Image = Properties.Resources.Save;
+            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalvar.Location = new Point(216, 189);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(112, 38);
+            btnSalvar.TabIndex = 51;
+            btnSalvar.Text = "&Salvar";
+            btnSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAdicionar
             // 
-            button1.AutoSize = true;
-            button1.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Image = Properties.Resources.Add;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(298, 189);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 38);
-            button1.TabIndex = 50;
-            button1.Text = "&Adicionar Novo";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            btnAdicionar.AutoSize = true;
+            btnAdicionar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdicionar.Image = Properties.Resources.Add;
+            btnAdicionar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdicionar.Location = new Point(334, 189);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(112, 38);
+            btnAdicionar.TabIndex = 50;
+            btnAdicionar.Text = "&Adicionar";
+            btnAdicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAdicionar.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -328,62 +308,78 @@
             label10.TabIndex = 49;
             label10.Text = "Bairro";
             // 
-            // comboBox1
+            // cmbTipoEndereco
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "RES - Residencial", "COM - Comercial", "ENT - Entrega", "COB - Cobrança", "RET - Reitrada", "TEMP - Temporário" });
-            comboBox1.Location = new Point(6, 103);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 48;
+            cmbTipoEndereco.FormattingEnabled = true;
+            cmbTipoEndereco.Items.AddRange(new object[] { "RES - Residencial", "COM - Comercial", "ENT - Entrega", "COB - Cobrança", "RET - Reitrada", "TEMP - Temporário" });
+            cmbTipoEndereco.Location = new Point(96, 103);
+            cmbTipoEndereco.Name = "cmbTipoEndereco";
+            cmbTipoEndereco.Size = new Size(121, 23);
+            cmbTipoEndereco.TabIndex = 48;
             // 
-            // textBox4
+            // txtComplemento
             // 
-            textBox4.Location = new Point(211, 59);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(199, 23);
-            textBox4.TabIndex = 47;
+            txtComplemento.Location = new Point(6, 103);
+            txtComplemento.Name = "txtComplemento";
+            txtComplemento.Size = new Size(84, 23);
+            txtComplemento.TabIndex = 47;
             // 
-            // textBox3
+            // txtBairro
             // 
-            textBox3.Location = new Point(6, 59);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(199, 23);
-            textBox3.TabIndex = 47;
+            txtBairro.Location = new Point(211, 59);
+            txtBairro.Name = "txtBairro";
+            txtBairro.Size = new Size(199, 23);
+            txtBairro.TabIndex = 47;
             // 
-            // textBox2
+            // txtCidade
             // 
-            textBox2.Location = new Point(418, 59);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(28, 23);
-            textBox2.TabIndex = 47;
+            txtCidade.Location = new Point(6, 59);
+            txtCidade.Name = "txtCidade";
+            txtCidade.Size = new Size(199, 23);
+            txtCidade.TabIndex = 47;
             // 
-            // textNumero
+            // txtUf
             // 
-            textNumero.Location = new Point(368, 18);
-            textNumero.Name = "textNumero";
-            textNumero.Size = new Size(78, 23);
-            textNumero.TabIndex = 46;
+            txtUf.Location = new Point(418, 59);
+            txtUf.Name = "txtUf";
+            txtUf.Size = new Size(28, 23);
+            txtUf.TabIndex = 47;
+            // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(368, 18);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(78, 23);
+            txtNumero.TabIndex = 46;
             // 
             // txtLogradouro
             // 
-            txtLogradouro.Location = new Point(63, 18);
+            txtLogradouro.Location = new Point(75, 18);
             txtLogradouro.Name = "txtLogradouro";
-            txtLogradouro.Size = new Size(299, 23);
+            txtLogradouro.Size = new Size(287, 23);
             txtLogradouro.TabIndex = 45;
             // 
-            // maskedTextBox1
+            // mxtCep
             // 
-            maskedTextBox1.Location = new Point(6, 18);
-            maskedTextBox1.Mask = "00000-999";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(51, 23);
-            maskedTextBox1.TabIndex = 44;
+            mxtCep.Location = new Point(6, 18);
+            mxtCep.Mask = "00000-999";
+            mxtCep.Name = "mxtCep";
+            mxtCep.Size = new Size(63, 23);
+            mxtCep.TabIndex = 44;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(6, 85);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 15);
+            label12.TabIndex = 43;
+            label12.Text = "Complemento";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 85);
+            label1.Location = new Point(96, 85);
             label1.Name = "label1";
             label1.Size = new Size(98, 15);
             label1.TabIndex = 43;
@@ -401,7 +397,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(63, 3);
+            label7.Location = new Point(75, 3);
             label7.Name = "label7";
             label7.Size = new Size(69, 15);
             label7.TabIndex = 39;
@@ -546,20 +542,18 @@
         private Label label6;
         private Label label8;
         private Label label9;
-        private TextBox textNumero;
+        private TextBox txtNumero;
         private TextBox txtLogradouro;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private Button button1;
+        private MaskedTextBox mxtCep;
+        private TextBox txtBairro;
+        private TextBox txtCidade;
+        private TextBox txtUf;
+        private Button btnAdicionar;
         private Label label11;
         private Label label10;
-        private ComboBox comboBox1;
+        private ComboBox cmbTipoEndereco;
         private Button btnEditar;
         private DataGridView dgvEnderecos;
-        private Button btnDeletar;
-        private Button button2;
         private DataGridViewTextBoxColumn clnCep;
         private DataGridViewTextBoxColumn clnLogradouro;
         private DataGridViewTextBoxColumn clnNumero;
@@ -568,5 +562,10 @@
         private DataGridViewTextBoxColumn clnCidade;
         private DataGridViewTextBoxColumn clnUf;
         private DataGridViewTextBoxColumn clnTipoEndereco;
+        private Button btnDeletear;
+        private Button btnSalvar;
+        private TextBox txtClienteId;
+        private TextBox txtComplemento;
+        private Label label12;
     }
 }
