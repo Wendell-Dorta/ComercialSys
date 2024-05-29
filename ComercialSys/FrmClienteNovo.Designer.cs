@@ -44,7 +44,6 @@
             label4 = new Label();
             txtNome = new TextBox();
             tbpEndereco = new TabPage();
-            btnSalvar = new Button();
             btnAdicionar = new Button();
             label11 = new Label();
             label10 = new Label();
@@ -237,7 +236,6 @@
             // 
             tbpEndereco.BackColor = Color.Transparent;
             tbpEndereco.BackgroundImageLayout = ImageLayout.None;
-            tbpEndereco.Controls.Add(btnSalvar);
             tbpEndereco.Controls.Add(btnAdicionar);
             tbpEndereco.Controls.Add(label11);
             tbpEndereco.Controls.Add(label10);
@@ -262,20 +260,6 @@
             tbpEndereco.TabIndex = 1;
             tbpEndereco.Text = "Endereço";
             // 
-            // btnSalvar
-            // 
-            btnSalvar.AutoSize = true;
-            btnSalvar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalvar.Image = Properties.Resources.Save;
-            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalvar.Location = new Point(216, 189);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(112, 38);
-            btnSalvar.TabIndex = 51;
-            btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSalvar.UseVisualStyleBackColor = true;
-            // 
             // btnAdicionar
             // 
             btnAdicionar.AutoSize = true;
@@ -289,6 +273,7 @@
             btnAdicionar.Text = "&Adicionar";
             btnAdicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // label11
             // 
@@ -366,6 +351,8 @@
             mxtCep.Name = "mxtCep";
             mxtCep.Size = new Size(63, 23);
             mxtCep.TabIndex = 44;
+            mxtCep.MaskInputRejected += mxtCep_MaskInputRejected;
+            mxtCep.Leave += mxtCep_Leave;
             // 
             // label12
             // 
@@ -431,6 +418,7 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Novo Cliente";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // dgvEnderecos
             // 
@@ -442,8 +430,10 @@
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.ReadOnly = true;
             dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEnderecos.Size = new Size(456, 150);
             dgvEnderecos.TabIndex = 53;
+            dgvEnderecos.SelectionChanged += dgvEnderecos_SelectionChanged;
             // 
             // clnCep
             // 
@@ -509,6 +499,7 @@
             Controls.Add(groupBox1);
             Name = "FrmClienteNovo";
             Text = "FrmClienteNovo";
+            Load += FrmClienteNovo_Load;
             tabControl1.ResumeLayout(false);
             tbpDadosPessoais.ResumeLayout(false);
             tbpDadosPessoais.PerformLayout();
@@ -563,7 +554,6 @@
         private DataGridViewTextBoxColumn clnUf;
         private DataGridViewTextBoxColumn clnTipoEndereco;
         private Button btnDeletear;
-        private Button btnSalvar;
         private TextBox txtClienteId;
         private TextBox txtComplemento;
         private Label label12;

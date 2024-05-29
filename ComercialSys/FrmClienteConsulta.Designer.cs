@@ -40,6 +40,7 @@
             clnTipoEndereco = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tbpCliente = new TabPage();
+            btnConsultar = new Button();
             button2 = new Button();
             chkAtivo = new CheckBox();
             dtpDataNasc = new DateTimePicker();
@@ -69,7 +70,6 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            btnConsultar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
             tabControl1.SuspendLayout();
@@ -98,8 +98,10 @@
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.ReadOnly = true;
             dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEnderecos.Size = new Size(456, 150);
             dgvEnderecos.TabIndex = 53;
+            dgvEnderecos.SelectionChanged += dgvEnderecos_SelectionChanged;
             // 
             // clnCep
             // 
@@ -189,6 +191,19 @@
             tbpCliente.Size = new Size(452, 233);
             tbpCliente.TabIndex = 0;
             tbpCliente.Text = "Clientes";
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnConsultar.Image = Properties.Resources.Search1;
+            btnConsultar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnConsultar.Location = new Point(335, 188);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(111, 39);
+            btnConsultar.TabIndex = 39;
+            btnConsultar.Text = "&Consultar";
+            btnConsultar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnConsultar.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -475,19 +490,6 @@
             label9.TabIndex = 41;
             label9.Text = "Numero";
             // 
-            // btnConsultar
-            // 
-            btnConsultar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConsultar.Image = Properties.Resources.Search1;
-            btnConsultar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnConsultar.Location = new Point(335, 188);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(111, 39);
-            btnConsultar.TabIndex = 39;
-            btnConsultar.Text = "&Consultar";
-            btnConsultar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnConsultar.UseVisualStyleBackColor = true;
-            // 
             // FrmClienteConsulta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -496,6 +498,7 @@
             Controls.Add(groupBox1);
             Name = "FrmClienteConsulta";
             Text = "FrmClienteConsulta";
+            Load += FrmClienteConsulta_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvEnderecos).EndInit();
             tabControl1.ResumeLayout(false);

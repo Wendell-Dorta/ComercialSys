@@ -46,6 +46,7 @@
             caixaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             tslUsuario = new ToolStripStatusLabel();
+            consultarToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -68,17 +69,17 @@
             // 
             // clientesToolStripMenuItem
             // 
-            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem });
+            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem, consultarToolStripMenuItem1 });
             clientesToolStripMenuItem.Image = Properties.Resources.User;
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(117, 22);
+            clientesToolStripMenuItem.Size = new Size(180, 22);
             clientesToolStripMenuItem.Text = "C&lientes";
             // 
             // novoToolStripMenuItem
             // 
             novoToolStripMenuItem.Image = Properties.Resources.AdItem2;
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(103, 22);
+            novoToolStripMenuItem.Size = new Size(180, 22);
             novoToolStripMenuItem.Text = "&Novo";
             novoToolStripMenuItem.Click += novoToolStripMenuItem_Click;
             // 
@@ -87,28 +88,28 @@
             produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem1, consultarToolStripMenuItem, categoriasToolStripMenuItem });
             produtoToolStripMenuItem.Image = Properties.Resources.skol;
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new Size(117, 22);
+            produtoToolStripMenuItem.Size = new Size(180, 22);
             produtoToolStripMenuItem.Text = "&Produto";
             // 
             // novoToolStripMenuItem1
             // 
             novoToolStripMenuItem1.Image = Properties.Resources.AdItem2;
             novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
-            novoToolStripMenuItem1.Size = new Size(130, 22);
+            novoToolStripMenuItem1.Size = new Size(180, 22);
             novoToolStripMenuItem1.Text = "&Novo";
             // 
             // consultarToolStripMenuItem
             // 
             consultarToolStripMenuItem.Image = Properties.Resources.edicion_pegar_icono_4029_64;
             consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            consultarToolStripMenuItem.Size = new Size(130, 22);
+            consultarToolStripMenuItem.Size = new Size(180, 22);
             consultarToolStripMenuItem.Text = "&Consultar";
             // 
             // categoriasToolStripMenuItem
             // 
             categoriasToolStripMenuItem.Image = Properties.Resources.wi0054_48;
             categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            categoriasToolStripMenuItem.Size = new Size(130, 22);
+            categoriasToolStripMenuItem.Size = new Size(180, 22);
             categoriasToolStripMenuItem.Text = "Cate&gorias";
             categoriasToolStripMenuItem.Click += categoriasToolStripMenuItem_Click;
             // 
@@ -116,7 +117,7 @@
             // 
             usuárioToolStripMenuItem.Image = Properties.Resources.user_256;
             usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            usuárioToolStripMenuItem.Size = new Size(117, 22);
+            usuárioToolStripMenuItem.Size = new Size(180, 22);
             usuárioToolStripMenuItem.Text = "&Usuário";
             usuárioToolStripMenuItem.Click += usuárioToolStripMenuItem_Click;
             // 
@@ -185,6 +186,14 @@
             tslUsuario.Size = new Size(12, 17);
             tslUsuario.Text = "-";
             // 
+            // consultarToolStripMenuItem1
+            // 
+            consultarToolStripMenuItem1.Image = Properties.Resources.Search;
+            consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            consultarToolStripMenuItem1.Size = new Size(180, 22);
+            consultarToolStripMenuItem1.Text = "&Consultar";
+            consultarToolStripMenuItem1.Click += consultarToolStripMenuItem1_Click;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -226,5 +235,6 @@
         private ToolStripMenuItem categoriasToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel tslUsuario;
+        private ToolStripMenuItem consultarToolStripMenuItem1;
     }
 }

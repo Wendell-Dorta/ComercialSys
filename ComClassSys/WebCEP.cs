@@ -1,9 +1,9 @@
-﻿//Criado por: Valter Henrique Junior  
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-namespace NcMaster
+
+namespace ComClassSys
 {
     public class WebCEP
     {
@@ -113,5 +113,6 @@ namespace NcMaster
             //</webservicecep>  
         }
         #endregion
+
     }
 }
