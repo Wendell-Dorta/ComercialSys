@@ -32,6 +32,7 @@
             cadastroToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
             novoToolStripMenuItem = new ToolStripMenuItem();
+            consultarToolStripMenuItem1 = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
             novoToolStripMenuItem1 = new ToolStripMenuItem();
             consultarToolStripMenuItem = new ToolStripMenuItem();
@@ -46,7 +47,6 @@
             caixaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             tslUsuario = new ToolStripStatusLabel();
-            consultarToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -79,9 +79,17 @@
             // 
             novoToolStripMenuItem.Image = Properties.Resources.AdItem2;
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(180, 22);
+            novoToolStripMenuItem.Size = new Size(125, 22);
             novoToolStripMenuItem.Text = "&Novo";
             novoToolStripMenuItem.Click += novoToolStripMenuItem_Click;
+            // 
+            // consultarToolStripMenuItem1
+            // 
+            consultarToolStripMenuItem1.Image = Properties.Resources.Search;
+            consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            consultarToolStripMenuItem1.Size = new Size(125, 22);
+            consultarToolStripMenuItem1.Text = "&Consultar";
+            consultarToolStripMenuItem1.Click += consultarToolStripMenuItem1_Click;
             // 
             // produtoToolStripMenuItem
             // 
@@ -97,6 +105,7 @@
             novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
             novoToolStripMenuItem1.Size = new Size(180, 22);
             novoToolStripMenuItem1.Text = "&Novo";
+            novoToolStripMenuItem1.Click += novoToolStripMenuItem1_Click;
             // 
             // consultarToolStripMenuItem
             // 
@@ -185,14 +194,6 @@
             tslUsuario.Name = "tslUsuario";
             tslUsuario.Size = new Size(12, 17);
             tslUsuario.Text = "-";
-            // 
-            // consultarToolStripMenuItem1
-            // 
-            consultarToolStripMenuItem1.Image = Properties.Resources.Search;
-            consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            consultarToolStripMenuItem1.Size = new Size(180, 22);
-            consultarToolStripMenuItem1.Text = "&Consultar";
-            consultarToolStripMenuItem1.Click += consultarToolStripMenuItem1_Click;
             // 
             // FrmPrincipal
             // 

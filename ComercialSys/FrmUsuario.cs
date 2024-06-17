@@ -119,7 +119,7 @@ namespace ComercialSys
                 var lista = Usuario.ObterLista(txtBusca.Text);
                 dgvUsuario.Rows.Clear();
                 int count = 0;
-                foreach(var usuario in lista)
+                foreach (var usuario in lista)
                 {
                     dgvUsuario.Rows.Add();
                     dgvUsuario.Rows[count].Cells[0].Value = usuario.Id;

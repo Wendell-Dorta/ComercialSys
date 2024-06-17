@@ -56,5 +56,12 @@ namespace ComercialSys
             frmClienteConsulta.MdiParent = this;
             frmClienteConsulta.Show();
         }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProdutoNovo frmProdutoNovo = new FrmProdutoNovo();
+            frmProdutoNovo.MdiParent = this;
+            frmProdutoNovo.Show();
+        }
     }
 }

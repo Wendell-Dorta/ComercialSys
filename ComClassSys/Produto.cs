@@ -14,7 +14,7 @@ namespace ComClassSys
         public string? Descricao { get; set; }
         public double? ValorUnit { get; set; }
         public string? UnidadeVenda { get; set; }
-        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
         public double? EstoqueMinimo { get; set; }
         public double? ClasseDesconto { get; set; }
         public string? Imagem { get; set; }
@@ -24,27 +24,27 @@ namespace ComClassSys
         {
             Id = 0;
         }
-        public Produto(int id, string codBarras, string descricao, double valorUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
+        public Produto(int id, string codBarras, string descricao, double valorUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
         {
             Id = id;
             CodBarras = codBarras;
             Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
-            CategoriaId = categoriaId;
+            Categoria = categoriaId;
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
             DataCad = dataCad;
         }
-        public Produto(int id, string codBarras, string descricao, double valorUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto, DateTime dataCad)
+        public Produto(int id, string codBarras, string descricao, double valorUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto, DateTime dataCad)
         {
             Id = id;
             CodBarras = codBarras;
             Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
-            CategoriaId = categoriaId;
+            Categoria = categoriaId;
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
             DataCad = dataCad;
@@ -53,13 +53,13 @@ namespace ComClassSys
         {
             CodBarras = codBarras;
         }
-        public Produto(string codBarras, string descricao, double valorUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
+        public Produto(string codBarras, string descricao, double valorUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
         {
             CodBarras = codBarras;
             Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
-            CategoriaId = categoriaId;
+            Categoria = categoriaId;
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
@@ -74,11 +74,46 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spunidade_venda", UnidadeVenda);
-            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategoria_id", Categoria.Id);
             cmd.Parameters.AddWithValue("spestoque_minimo", EstoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
 
+        }
+        public static List<Produto> ObterLista(string descricao = null)
+        {
+            List<Produto> produto = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from produtos order by descricao";
+            if (descricao == null)
+            {
+                cmd.CommandText = "select * from produtos order by descricao";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from produtos where nome like '%{descricao}%' order by descricao";
+            }
+
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                produto.Add(
+                    new Produto(
+                        dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
+                        dr.GetDouble(3),
+                        dr.GetString(4),
+                        Categoria.ObterPorId((5)),
+                        dr.GetDouble(6),
+                        dr.GetDouble(7),
+                        dr.GetDateTime(8)
+                    )
+                );
+            }
+
+            return produto;
         }
         public static Produto ObterPorId(int id)
         {
@@ -95,36 +130,10 @@ namespace ComClassSys
                     dr.GetString(2),
                     dr.GetDouble(3),
                     dr.GetString(4),
-                    dr.GetInt32(5),
+                    Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
                     dr.GetDateTime(8)
-                );
-            }
-
-            return produto;
-        }
-        public static List<Produto> ObterLista()
-        {
-            List<Produto> produto = new();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from clientes order by nome";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                produto.Add(
-                    new(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetDouble(3),
-                        dr.GetString(4),
-                        dr.GetInt32(5),
-                        dr.GetDouble(6),
-                        dr.GetDouble(7),
-                        dr.GetDateTime(8)
-                    )
                 );
             }
             return produto;
@@ -139,7 +148,7 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spunidade_venda", UnidadeVenda);
-            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategoria_id", Categoria.Id);
             cmd.Parameters.AddWithValue("spestoque_minimo", EstoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
