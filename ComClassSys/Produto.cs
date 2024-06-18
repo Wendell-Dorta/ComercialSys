@@ -11,14 +11,14 @@ namespace ComClassSys
     {
         public int Id { get; set; }
         public string? CodBarras { get; set; }
-        public string Descricao { get; set; }
-        public double ValorUnit { get; set; }
-        public string UnidadeVenda { get; set; }
-        public Categoria Categoria { get; set; }
-        public double EstoqueMinimo { get; set; }
-        public double ClasseDesconto { get; set; }
-        public string Imagem { get; set; }
-        public DateTime DataCad { get; set; }
+        public string? Descricao { get; set; }
+        public double? ValorUnit { get; set; }
+        public string? UnidadeVenda { get; set; }
+        public Categoria? Categoria { get; set; }
+        public double? EstoqueMinimo { get; set; }
+        public double? ClasseDesconto { get; set; }
+        public string? Imagem { get; set; }
+        public DateTime? DataCad { get; set; }
 
         public Produto()
         {
@@ -96,7 +96,6 @@ namespace ComClassSys
             List<Produto> produto = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from produtos order by descricao";
             if (descricao == null)
             {
                 cmd.CommandText = "select * from produtos order by descricao";

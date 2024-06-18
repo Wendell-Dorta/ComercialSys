@@ -18,6 +18,11 @@ namespace ComercialSys
             InitializeComponent();
         }
 
+        private string GetText()
+        {
+            return txtClasseDesconto.Text;
+        }
+
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             if (btnConsultar.Text == "&Consultar")
@@ -37,17 +42,22 @@ namespace ComercialSys
             {
                 if (txtId.Text.Length > 0)
                 {
-                    double valorUnit = double.Parse(txtValorUnit.Text);
-                    double estoqueMinimo = double.Parse(txtEstoqueMinimo.Text);
-                    double classeDesconto = double.Parse(txtClasseDesconto.Text);
-
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
                     txtCodBarras.Text = produto.CodBarras;
                     txtDescricao.Text = produto.Descricao;
                     txtUnidadeVenda.Text = produto.UnidadeVenda;
-                    valorUnit = produto.ValorUnit;
-                    estoqueMinimo = produto.EstoqueMinimo;
-                    classeDesconto = produto.ClasseDesconto;
+
+                    double valorUnit = Convert.ToDouble(produto.ValorUnit);
+                    double estoqueMinimo = Convert.ToDouble(produto.EstoqueMinimo);
+                    double classeDesconto = Convert.ToDouble(produto.ClasseDesconto);
+
+                    txtValorUnit.Text = Convert.ToString(valorUnit);
+                    txtEstoqueMinimo.Text = Convert.ToString(estoqueMinimo);
+                    txtClasseDesconto.Text = Convert.ToString(classeDesconto);
+
+                    DateTime dataCad = Convert.ToDateTime(produto.DataCad);
+
+                    dtpDataCad.Value = dataCad;
 
                     txtId.ReadOnly = true;
                     btnConsultar.Text = "&Consultar";
@@ -61,9 +71,8 @@ namespace ComercialSys
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Categoria categoria = new();
-            txtCatId.Text = Convert.ToString(categoria.Id);
 
-            Produto produto = new (
+            Produto produto = new(
                     int.Parse(txtId.Text),
                     txtCodBarras.Text,
                     txtDescricao.Text,
@@ -108,8 +117,7 @@ namespace ComercialSys
                 dgvProdutos.Rows[count].Cells[5].Value = produto.Categoria.Nome;
                 dgvProdutos.Rows[count].Cells[6].Value = produto.EstoqueMinimo;
                 dgvProdutos.Rows[count].Cells[7].Value = produto.ClasseDesconto;
-                dgvProdutos.Rows[count].Cells[8].Value = produto.Imagem;
-                dgvProdutos.Rows[count].Cells[9].Value = produto.DataCad;
+                dgvProdutos.Rows[count].Cells[8].Value = produto.DataCad;
 
                 count++;
             }

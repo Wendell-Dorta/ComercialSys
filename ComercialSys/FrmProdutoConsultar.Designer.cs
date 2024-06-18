@@ -62,14 +62,12 @@
             dgvClasseDesconto = new DataGridViewTextBoxColumn();
             dgvDataCad = new DataGridViewTextBoxColumn();
             txtBusca = new TextBox();
-            txtCatId = new TextBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtCatId);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(dtpDataCad);
             groupBox2.Controls.Add(btnConsultar);
@@ -110,6 +108,7 @@
             // 
             // dtpDataCad
             // 
+            dtpDataCad.Enabled = false;
             dtpDataCad.Format = DateTimePickerFormat.Short;
             dtpDataCad.Location = new Point(312, 126);
             dtpDataCad.Name = "dtpDataCad";
@@ -370,14 +369,6 @@
             txtBusca.TabIndex = 56;
             txtBusca.TextChanged += txtBusca_TextChanged;
             // 
-            // txtCatId
-            // 
-            txtCatId.Location = new Point(438, 121);
-            txtCatId.Name = "txtCatId";
-            txtCatId.Size = new Size(24, 23);
-            txtCatId.TabIndex = 21;
-            txtCatId.Visible = false;
-            // 
             // FrmProdutoConsultar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -432,6 +423,5 @@
         private Button btnEditar;
         private DateTimePicker dtpDataCad;
         private Label label2;
-        private TextBox txtCatId;
     }
 }
