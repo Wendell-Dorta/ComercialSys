@@ -87,25 +87,5 @@ namespace ComercialSys
 
             }
         }
-
-        private void mxtCep_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void FrmClienteNovo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvEnderecos_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

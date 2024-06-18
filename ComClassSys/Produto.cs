@@ -11,13 +11,13 @@ namespace ComClassSys
     {
         public int Id { get; set; }
         public string? CodBarras { get; set; }
-        public string? Descricao { get; set; }
-        public double? ValorUnit { get; set; }
-        public string? UnidadeVenda { get; set; }
+        public string Descricao { get; set; }
+        public double ValorUnit { get; set; }
+        public string UnidadeVenda { get; set; }
         public Categoria Categoria { get; set; }
-        public double? EstoqueMinimo { get; set; }
-        public double? ClasseDesconto { get; set; }
-        public string? Imagem { get; set; }
+        public double EstoqueMinimo { get; set; }
+        public double ClasseDesconto { get; set; }
+        public string Imagem { get; set; }
         public DateTime DataCad { get; set; }
 
         public Produto()
@@ -64,6 +64,17 @@ namespace ComClassSys
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
             DataCad = dataCad;
+        }
+        public Produto(int id, string codBarras, string descricao, double valorUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto)
+        {
+            Id = id;
+            CodBarras = codBarras;
+            Descricao = descricao;
+            ValorUnit = valorUnit;
+            UnidadeVenda = unidadeVenda;
+            Categoria = categoriaId;
+            EstoqueMinimo = estoqueMinimo;
+            ClasseDesconto = classeDesconto;
         }
         public void Inserir()
         {
@@ -130,7 +141,7 @@ namespace ComClassSys
                     dr.GetString(2),
                     dr.GetDouble(3),
                     dr.GetString(4),
-                    Categoria.ObterPorId(dr.GetInt32(5)),
+                    Categoria.ObterPorId((5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
                     dr.GetDateTime(8)

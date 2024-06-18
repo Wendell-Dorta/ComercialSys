@@ -24,26 +24,6 @@ namespace ComercialSys
             cbmCategoria.DataSource = categorias;
             cbmCategoria.DisplayMember = "nome";
             cbmCategoria.ValueMember = "id";
-
-            Produto produto = new();
-            var lista = Produto.ObterLista();
-            dgvProdutos.Rows.Clear();
-            int count = 0;
-            foreach (var usuario in lista)
-            {
-                dgvProdutos.Rows.Add();
-                // dgvUsuarios.CurrentRow.Index
-                dgvProdutos.Rows[count].Cells[0].Value = produto.Id;
-                dgvProdutos.Rows[count].Cells[1].Value = produto.CodBarras;
-                dgvProdutos.Rows[count].Cells[2].Value = produto.Descricao;
-                dgvProdutos.Rows[count].Cells[3].Value = produto.ValorUnit;
-                dgvProdutos.Rows[count].Cells[4].Value = produto.Categoria.Nome;
-                dgvProdutos.Rows[count].Cells[5].Value = produto.EstoqueMinimo;
-                dgvProdutos.Rows[count].Cells[6].Value = produto.ClasseDesconto;
-                dgvProdutos.Rows[count].Cells[7].Value = produto.DataCad;
-            
-                count++;
-            }
         }
         private void bntInserir_Click(object sender, EventArgs e)
         {
