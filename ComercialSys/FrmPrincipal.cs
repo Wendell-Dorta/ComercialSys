@@ -42,12 +42,12 @@ namespace ComercialSys
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             FrmLogin login = new();
-            // login.MdiParent = this;
-            //login.StartPosition = FormStartPosition.CenterScreen;
-            //login.ShowDialog();
-            // fazer uma variavel de conf que quando o login = true exibe a pagina principal
+            //login.MdiParent = this;
+            login.StartPosition = FormStartPosition.CenterScreen;
+            login.ShowDialog();
+            //fazer uma variavel de conf que quando o login = true exibe a pagina principal
             //this.Hide();
-            //tslUsuario.Text = Program.Usuario.Nome = " - " + Program.Usuario.Nivel.Nome;
+            tslUsuario.Text = $"{Program.Usuario.Nome}  -  {Program.Usuario.Nivel.Nome}";
         }
 
         private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -59,16 +59,23 @@ namespace ComercialSys
 
         private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmProdutoNovo frmProdutoNovo = new FrmProdutoNovo();
+            FrmProdutoNovo frmProdutoNovo = new();
             frmProdutoNovo.MdiParent = this;
             frmProdutoNovo.Show();
         }
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProdutoConsultar frmProdutoConsultar = new FrmProdutoConsultar();
+            FrmProdutoConsultar frmProdutoConsultar = new();
             frmProdutoConsultar.MdiParent = this;
             frmProdutoConsultar.Show();
+        }
+
+        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
         }
     }
 }

@@ -40,8 +40,8 @@
             clnTipoEndereco = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tbpCliente = new TabPage();
-            btnConsultar = new Button();
-            button2 = new Button();
+            btnEditarCliente = new Button();
+            btnConsultarCliente = new Button();
             chkAtivo = new CheckBox();
             dtpDataNasc = new DateTimePicker();
             mxtTelefone = new MaskedTextBox();
@@ -54,8 +54,8 @@
             label4 = new Label();
             txtNome = new TextBox();
             tbpEndereco = new TabPage();
-            btnDeletear = new Button();
-            btnEditar = new Button();
+            btnDeletearEndereco = new Button();
+            btnEditarEndereco = new Button();
             label11 = new Label();
             label10 = new Label();
             comboBox1 = new ComboBox();
@@ -172,8 +172,8 @@
             // tbpCliente
             // 
             tbpCliente.BackColor = Color.Transparent;
-            tbpCliente.Controls.Add(btnConsultar);
-            tbpCliente.Controls.Add(button2);
+            tbpCliente.Controls.Add(btnEditarCliente);
+            tbpCliente.Controls.Add(btnConsultarCliente);
             tbpCliente.Controls.Add(chkAtivo);
             tbpCliente.Controls.Add(dtpDataNasc);
             tbpCliente.Controls.Add(mxtTelefone);
@@ -192,33 +192,33 @@
             tbpCliente.TabIndex = 0;
             tbpCliente.Text = "Clientes";
             // 
-            // btnConsultar
+            // btnEditarCliente
             // 
-            btnConsultar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConsultar.Image = Properties.Resources.Search1;
-            btnConsultar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnConsultar.Location = new Point(335, 188);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(111, 39);
-            btnConsultar.TabIndex = 39;
-            btnConsultar.Text = "&Consultar";
-            btnConsultar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnConsultar.UseVisualStyleBackColor = true;
+            btnEditarCliente.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditarCliente.Image = Properties.Resources.Search1;
+            btnEditarCliente.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditarCliente.Location = new Point(218, 188);
+            btnEditarCliente.Name = "btnEditarCliente";
+            btnEditarCliente.Size = new Size(111, 39);
+            btnEditarCliente.TabIndex = 39;
+            btnEditarCliente.Text = "&Editar";
+            btnEditarCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEditarCliente.UseVisualStyleBackColor = true;
+            btnEditarCliente.Click += btnEditarCliente_Click;
             // 
-            // button2
+            // btnConsultarCliente
             // 
-            button2.AutoSize = true;
-            button2.Enabled = false;
-            button2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Image = Properties.Resources.Edit_Alt1;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(218, 189);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 39);
-            button2.TabIndex = 37;
-            button2.Text = "&Editar";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            btnConsultarCliente.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnConsultarCliente.Image = Properties.Resources.Search1;
+            btnConsultarCliente.ImageAlign = ContentAlignment.MiddleLeft;
+            btnConsultarCliente.Location = new Point(335, 188);
+            btnConsultarCliente.Name = "btnConsultarCliente";
+            btnConsultarCliente.Size = new Size(111, 39);
+            btnConsultarCliente.TabIndex = 39;
+            btnConsultarCliente.Text = "&Consultar";
+            btnConsultarCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnConsultarCliente.UseVisualStyleBackColor = true;
+            btnConsultarCliente.Click += btnConsultarCliente_Click;
             // 
             // chkAtivo
             // 
@@ -322,8 +322,8 @@
             // 
             tbpEndereco.BackColor = Color.Transparent;
             tbpEndereco.BackgroundImageLayout = ImageLayout.None;
-            tbpEndereco.Controls.Add(btnDeletear);
-            tbpEndereco.Controls.Add(btnEditar);
+            tbpEndereco.Controls.Add(btnDeletearEndereco);
+            tbpEndereco.Controls.Add(btnEditarEndereco);
             tbpEndereco.Controls.Add(label11);
             tbpEndereco.Controls.Add(label10);
             tbpEndereco.Controls.Add(comboBox1);
@@ -345,35 +345,37 @@
             tbpEndereco.TabIndex = 1;
             tbpEndereco.Text = "Endereço";
             // 
-            // btnDeletear
+            // btnDeletearEndereco
             // 
-            btnDeletear.AutoSize = true;
-            btnDeletear.Enabled = false;
-            btnDeletear.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDeletear.Image = Properties.Resources.Delete;
-            btnDeletear.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDeletear.Location = new Point(250, 189);
-            btnDeletear.Name = "btnDeletear";
-            btnDeletear.Size = new Size(98, 38);
-            btnDeletear.TabIndex = 52;
-            btnDeletear.Text = "&Deletar";
-            btnDeletear.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDeletear.UseVisualStyleBackColor = true;
+            btnDeletearEndereco.AutoSize = true;
+            btnDeletearEndereco.Enabled = false;
+            btnDeletearEndereco.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeletearEndereco.Image = Properties.Resources.Delete;
+            btnDeletearEndereco.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDeletearEndereco.Location = new Point(250, 189);
+            btnDeletearEndereco.Name = "btnDeletearEndereco";
+            btnDeletearEndereco.Size = new Size(98, 38);
+            btnDeletearEndereco.TabIndex = 52;
+            btnDeletearEndereco.Text = "&Deletar";
+            btnDeletearEndereco.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnDeletearEndereco.UseVisualStyleBackColor = true;
+            btnDeletearEndereco.Click += btnDeletearEndereco_Click;
             // 
-            // btnEditar
+            // btnEditarEndereco
             // 
-            btnEditar.AutoSize = true;
-            btnEditar.Enabled = false;
-            btnEditar.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Image = Properties.Resources.Edit_Alt1;
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(354, 189);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(92, 38);
-            btnEditar.TabIndex = 51;
-            btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditarEndereco.AutoSize = true;
+            btnEditarEndereco.Enabled = false;
+            btnEditarEndereco.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditarEndereco.Image = Properties.Resources.Edit_Alt1;
+            btnEditarEndereco.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditarEndereco.Location = new Point(354, 189);
+            btnEditarEndereco.Name = "btnEditarEndereco";
+            btnEditarEndereco.Size = new Size(92, 38);
+            btnEditarEndereco.TabIndex = 51;
+            btnEditarEndereco.Text = "&Editar";
+            btnEditarEndereco.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEditarEndereco.UseVisualStyleBackColor = true;
+            btnEditarEndereco.Click += btnEditarEndereco_Click;
             // 
             // label11
             // 
@@ -523,7 +525,6 @@
         private DataGridViewTextBoxColumn clnTipoEndereco;
         private TabControl tabControl1;
         private TabPage tbpCliente;
-        private Button button2;
         private CheckBox chkAtivo;
         private DateTimePicker dtpDataNasc;
         private MaskedTextBox mxtTelefone;
@@ -536,8 +537,8 @@
         private Label label4;
         private TextBox txtNome;
         private TabPage tbpEndereco;
-        private Button btnDeletear;
-        private Button btnEditar;
+        private Button btnDeletearEndereco;
+        private Button btnEditarEndereco;
         private Label label11;
         private Label label10;
         private ComboBox comboBox1;
@@ -552,6 +553,7 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Button btnConsultar;
+        private Button btnConsultarCliente;
+        private Button btnEditarCliente;
     }
 }

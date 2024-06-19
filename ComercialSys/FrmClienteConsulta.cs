@@ -68,5 +68,24 @@ namespace ComercialSys
             int clienteId = Convert.ToInt32(dgvEnderecos.Rows[dgvEnderecos.CurrentRow.Index].Cells[0].Value);
             CarregaGridEndereco(clienteId);
         }
+        private void btnEditarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConsultarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarEndereco_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeletearEndereco_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,11 +18,6 @@ namespace ComercialSys
             InitializeComponent();
         }
 
-        private string GetText()
-        {
-            return txtClasseDesconto.Text;
-        }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             if (btnConsultar.Text == "&Consultar")
@@ -70,8 +65,6 @@ namespace ComercialSys
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Categoria categoria = new();
-
             Produto produto = new(
                     int.Parse(txtId.Text),
                     txtCodBarras.Text,
@@ -96,13 +89,11 @@ namespace ComercialSys
 
         private void FrmProdutoConsultar_Load(object sender, EventArgs e)
         {
-            var categorias = Nivel.ObterLista();
+            var categorias = Categoria.ObterLista();
             cbmCategoria.DataSource = categorias;
-            cbmCategoria.DisplayMember = "descricao";
+            cbmCategoria.DisplayMember = "nome";
             cbmCategoria.ValueMember = "id";
-
-
-            // List<Usuario> lista = Usuario.ObterLista(); <- tambem pode ser feito assim
+          
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
             int count = 0;

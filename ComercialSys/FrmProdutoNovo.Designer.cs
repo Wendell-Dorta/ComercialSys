@@ -29,7 +29,18 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            dgvProdutos = new DataGridView();
+            dgvId = new DataGridViewTextBoxColumn();
+            dgvCodBarras = new DataGridViewTextBoxColumn();
+            dgvDescricao = new DataGridViewTextBoxColumn();
+            dgvValorUnit = new DataGridViewTextBoxColumn();
+            dgvUnidadeVenda = new DataGridViewTextBoxColumn();
+            dgvCategoria = new DataGridViewTextBoxColumn();
+            dgvEstoqueMinimo = new DataGridViewTextBoxColumn();
+            dgvClasseDesconto = new DataGridViewTextBoxColumn();
+            dgvDataCad = new DataGridViewTextBoxColumn();
             txtValorUnit = new TextBox();
+            txtBusca = new TextBox();
             cbmCategoria = new ComboBox();
             label7 = new Label();
             label6 = new Label();
@@ -49,6 +60,7 @@
             label14 = new Label();
             txtDescricao = new TextBox();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // groupBox2
@@ -74,10 +86,79 @@
             groupBox2.Controls.Add(txtDescricao);
             groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(500, 426);
+            groupBox2.Size = new Size(500, 285);
             groupBox2.TabIndex = 55;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados de Produto";
+            // 
+            // dgvProdutos
+            // 
+            dgvProdutos.AllowUserToAddRows = false;
+            dgvProdutos.AllowUserToDeleteRows = false;
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { dgvId, dgvCodBarras, dgvDescricao, dgvValorUnit, dgvUnidadeVenda, dgvCategoria, dgvEstoqueMinimo, dgvClasseDesconto, dgvDataCad });
+            dgvProdutos.Location = new Point(12, 332);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.ReadOnly = true;
+            dgvProdutos.RowHeadersVisible = false;
+            dgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProdutos.Size = new Size(500, 150);
+            dgvProdutos.TabIndex = 59;
+            // 
+            // dgvId
+            // 
+            dgvId.HeaderText = "Id";
+            dgvId.Name = "dgvId";
+            dgvId.ReadOnly = true;
+            dgvId.Width = 40;
+            // 
+            // dgvCodBarras
+            // 
+            dgvCodBarras.HeaderText = "Codigo de Barras";
+            dgvCodBarras.Name = "dgvCodBarras";
+            dgvCodBarras.ReadOnly = true;
+            // 
+            // dgvDescricao
+            // 
+            dgvDescricao.HeaderText = "Descrição";
+            dgvDescricao.Name = "dgvDescricao";
+            dgvDescricao.ReadOnly = true;
+            // 
+            // dgvValorUnit
+            // 
+            dgvValorUnit.HeaderText = "Valor Unitário";
+            dgvValorUnit.Name = "dgvValorUnit";
+            dgvValorUnit.ReadOnly = true;
+            // 
+            // dgvUnidadeVenda
+            // 
+            dgvUnidadeVenda.HeaderText = "Unidade de Venda";
+            dgvUnidadeVenda.Name = "dgvUnidadeVenda";
+            dgvUnidadeVenda.ReadOnly = true;
+            // 
+            // dgvCategoria
+            // 
+            dgvCategoria.HeaderText = "Categoria";
+            dgvCategoria.Name = "dgvCategoria";
+            dgvCategoria.ReadOnly = true;
+            // 
+            // dgvEstoqueMinimo
+            // 
+            dgvEstoqueMinimo.HeaderText = "Estoque Mínimo";
+            dgvEstoqueMinimo.Name = "dgvEstoqueMinimo";
+            dgvEstoqueMinimo.ReadOnly = true;
+            // 
+            // dgvClasseDesconto
+            // 
+            dgvClasseDesconto.HeaderText = "Classe de Desconto";
+            dgvClasseDesconto.Name = "dgvClasseDesconto";
+            dgvClasseDesconto.ReadOnly = true;
+            // 
+            // dgvDataCad
+            // 
+            dgvDataCad.HeaderText = "Data de Cadastro";
+            dgvDataCad.Name = "dgvDataCad";
+            dgvDataCad.ReadOnly = true;
             // 
             // txtValorUnit
             // 
@@ -85,6 +166,14 @@
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(94, 23);
             txtValorUnit.TabIndex = 16;
+            // 
+            // txtBusca
+            // 
+            txtBusca.Location = new Point(12, 303);
+            txtBusca.Name = "txtBusca";
+            txtBusca.PlaceholderText = "Digite para pesquisar o usuário";
+            txtBusca.Size = new Size(500, 23);
+            txtBusca.TabIndex = 58;
             // 
             // cbmCategoria
             // 
@@ -147,7 +236,7 @@
             bntInserir.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bntInserir.Image = Properties.Resources.Add;
             bntInserir.ImageAlign = ContentAlignment.MiddleLeft;
-            bntInserir.Location = new Point(383, 381);
+            bntInserir.Location = new Point(383, 240);
             bntInserir.Name = "bntInserir";
             bntInserir.Size = new Size(111, 39);
             bntInserir.TabIndex = 5;
@@ -244,14 +333,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(525, 450);
+            ClientSize = new Size(521, 490);
+            Controls.Add(dgvProdutos);
             Controls.Add(groupBox2);
+            Controls.Add(txtBusca);
             Name = "FrmProdutoNovo";
             Text = "FrmProduto";
             Load += FrmProdutoNovo_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -275,5 +368,16 @@
         private TextBox txtImagem;
         private Label label1;
         private TextBox txtValorUnit;
+        private DataGridView dgvProdutos;
+        private DataGridViewTextBoxColumn dgvId;
+        private DataGridViewTextBoxColumn dgvCodBarras;
+        private DataGridViewTextBoxColumn dgvDescricao;
+        private DataGridViewTextBoxColumn dgvValorUnit;
+        private DataGridViewTextBoxColumn dgvUnidadeVenda;
+        private DataGridViewTextBoxColumn dgvCategoria;
+        private DataGridViewTextBoxColumn dgvEstoqueMinimo;
+        private DataGridViewTextBoxColumn dgvClasseDesconto;
+        private DataGridViewTextBoxColumn dgvDataCad;
+        private TextBox txtBusca;
     }
 }

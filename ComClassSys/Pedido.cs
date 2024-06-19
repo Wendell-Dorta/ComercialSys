@@ -8,5 +8,6 @@ namespace ComClassSys
 {
     public class Pedido
     {
+
     }
 }

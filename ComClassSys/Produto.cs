@@ -76,6 +76,16 @@ namespace ComClassSys
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
         }
+        public Produto(string codBarras, string descricao, double valorUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto)
+        {
+            CodBarras = codBarras;
+            Descricao = descricao;
+            ValorUnit = valorUnit;
+            UnidadeVenda = unidadeVenda;
+            Categoria = categoriaId;
+            EstoqueMinimo = estoqueMinimo;
+            ClasseDesconto = classeDesconto;
+        }
         public void Inserir()
         {
             var cmd = Banco.Abrir();
