@@ -162,6 +162,30 @@ namespace ComClassSys
             }
             return produto;
         }
+        public static Produto ObterPorCodigoDeBarras(int codBarras)
+        {
+            Produto produto = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from pedidos where cod_barras = {codBarras}";
+            var dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                produto = new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetDouble(3),
+                    dr.GetString(4),
+                    Categoria.ObterPorId((5)),
+                    dr.GetDouble(6),
+                    dr.GetDouble(7),
+                    dr.GetDateTime(8)
+                    );
+            }
+
+            return produto;
+        }
         public bool Editar(int id)
         {
             var cmd = Banco.Abrir();

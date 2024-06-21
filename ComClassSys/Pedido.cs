@@ -11,11 +11,11 @@ namespace ComClassSys
     {
         // Propriedades
         public int Id { get; set; }
-        public Usuario Usuario { get; set; }
-        public Cliente Cliente { get; set; }
-        public DateTime Data { get; set; }
-        public string Status { get; set; }
-        public double Desconto { get; set; }
+        public Usuario? Usuario { get; set; }
+        public Cliente? Cliente { get; set; }
+        public DateTime? Data { get; set; }
+        public string? Status { get; set; }
+        public double? Desconto { get; set; }
         List<ItemPedido> Itens { get; set; }
 
         // Métodos Construtores
@@ -49,7 +49,7 @@ namespace ComClassSys
         }
 
         // Métodos da Classe
-        public void Inserir(int id)
+        public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -71,13 +71,14 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
             cmd.Parameters.AddWithValue("spstatus", Status);
             cmd.Parameters.AddWithValue("spdesconto", Desconto);
-
-            return true;
+            return cmd.ExecuteNonQuery()>0?true:false;
         }
 
         public bool Alterar(string status)
         {
-            return true;
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"update pedidos set status = {status} where id = {Id}";
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
 
         public static double CalcularPedido(int id)
@@ -102,25 +103,66 @@ namespace ComClassSys
                         dr.GetDateTime(3),
                         dr.GetString(4),
                         dr.GetDouble(5),
-                        ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                        ItemPedido.ObterListaPorPedido(dr.GetInt32(0)) 
                     );
             }
 
             return pedido;
         }
 
-        public static Pedido ObterPorClienteId(int id)
+        public static List<Pedido> ObterPorClienteId(int ClienteId)
         {
-            Pedido pedido = new();
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from pedidos where cliente_id = {ClienteId}";
+            var dr = cmd.ExecuteReader();
 
-            return pedido;
+            while (dr.Read())
+            {
+                pedidos.Add(new(
+                        dr.GetInt32(0),
+                        Usuario.ObterPorId((dr.GetInt32(1))),
+                        Cliente.ObterPorId(dr.GetInt32(2)),
+                        dr.GetDateTime(3),
+                        dr.GetString(4),
+                        dr.GetDouble(5),
+                        ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                    ));
+            }
+
+            return pedidos;
         }
 
-        public static List<Pedido> ObterLista(int id)
+        public static List<Pedido> ObterLista(string status = "")
         {
-            List<Pedido> lista = new();
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
 
-            return lista;
+            if (status == "")
+            {
+                cmd.CommandText = "select * from pedidos";
+            }
+            else
+            {          
+                cmd.CommandText = $"select * from pedidos where status = {status}";              
+            }
+
+            var dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                pedidos.Add(new(
+                        dr.GetInt32(0),
+                        Usuario.ObterPorId((dr.GetInt32(1))),
+                        Cliente.ObterPorId(dr.GetInt32(2)),
+                        dr.GetDateTime(3),
+                        dr.GetString(4),
+                        dr.GetDouble(5),
+                        ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                    ));
+            }
+
+            return pedidos;
         }
     }
 }

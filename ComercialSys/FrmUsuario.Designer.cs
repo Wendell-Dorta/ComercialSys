@@ -242,7 +242,7 @@
             dgvUsuario.ReadOnly = true;
             dgvUsuario.RowHeadersVisible = false;
             dgvUsuario.Size = new Size(500, 150);
-            dgvUsuario.TabIndex = 3;
+            dgvUsuario.TabIndex = 3;      
             // 
             // clnId
             // 
