@@ -9,6 +9,7 @@ namespace ComClassSys
 {
     public class Produto
     {
+        // Propriedades
         public int Id { get; set; }
         public string? CodBarras { get; set; }
         public string? Descricao { get; set; }
@@ -20,6 +21,7 @@ namespace ComClassSys
         public string? Imagem { get; set; }
         public DateTime? DataCad { get; set; }
 
+        // Métodos Construtores
         public Produto()
         {
             Id = 0;
@@ -86,6 +88,8 @@ namespace ComClassSys
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
         }
+
+        // Métodos da Classe
         public void Inserir()
         {
             var cmd = Banco.Abrir();
