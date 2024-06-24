@@ -52,9 +52,9 @@ namespace ComercialSys
 
         private void txtProdutoCodBarras_TextChanged(object sender, EventArgs e)
         {
-            if (txtProdutoCodBarras.Text.Length > 4)
+            if (txtProdutoCodBarras.Text.Length > 0)
             {
-                var produto = Produto.ObterPorCodigoDeBarras(int.Parse(txtProdutoCodBarras.Text));
+                var produto = Produto.ObterPorId(int.Parse(txtProdutoCodBarras.Text));
                 if (produto.Id > 0)
                 {
                     txtProdDescricao.Text = produto.Descricao;
@@ -67,10 +67,42 @@ namespace ComercialSys
         {
             ItemPedido itemPedido = new(int.Parse(txtNumeroPedido.Text),
                     Produto.ObterPorId(int.Parse(txtProdutoCodBarras.Text)),
-                    double.Parse(txtProdQuantidade.Text),
-                    0
+                    double.Parse(txtProdValorUnit.Text),
+                    double.Parse(txtProdQuantidade.Text),                    
+                    double.Parse(txtDescontoItem.Text)
                 );
             itemPedido.Inserir();
+
+            // limpar o dataGrid
+            dgvItensPedido.Rows.Clear();
+            var itens = ItemPedido.ObterListaPorPedido(int.Parse(txtNumeroPedido.Text));
+
+            int count = 0;
+            double subtotal = 0;
+            foreach (var item in itens)
+            {
+                dgvItensPedido.Rows.Add();
+                dgvItensPedido.Rows[count].Cells[0].Value = $"#{count + 1}"; // seq
+                dgvItensPedido.Rows[count].Cells[1].Value = item.Produto.CodBarras; // codbar
+                dgvItensPedido.Rows[count].Cells[2].Value = item.Produto.Descricao; // descrição
+                dgvItensPedido.Rows[count].Cells[3].Value = item.Produto.UnidadeVenda; // unidade venda
+                dgvItensPedido.Rows[count].Cells[4].Value = item.ValorUnit; // valor unitario
+                dgvItensPedido.Rows[count].Cells[5].Value = item.Quantidade; // quantidade
+                dgvItensPedido.Rows[count].Cells[6].Value = item.Desconto; // desconto
+                dgvItensPedido.Rows[count].Cells[7].Value = item.ValorUnit * item.Quantidade - item.Desconto; // valor item
+
+
+                subtotal += item.ValorUnit * item.Quantidade - item.Desconto;
+
+                count++;
+            }
+
+
+            txtProdutoCodBarras.Clear();
+            txtProdDescricao.Clear();
+            txtProdQuantidade.Clear();
+            txtProdValorUnit.Clear();
+            txtDescontoItem.Clear();
         }
     }
 }
